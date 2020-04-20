@@ -22,8 +22,6 @@ import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.security.ProviderInstaller;
@@ -103,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             public void onReachEnd() {
                 if (!isLoading) {
                     downloadData(methodOfSort, page);
-                    Toast.makeText(MainActivity.this, "Конец", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -115,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 if (page == 1) {
                     movieAdapter.setMovies(movies);
                 }
-
             }
         });
     }

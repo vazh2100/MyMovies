@@ -67,12 +67,15 @@ public class DetailedActivity extends AppCompatActivity {
 
     private void initItems() {
         setContentView(R.layout.activity_detailed);
+        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+
         intent = getIntent();
         if (intent != null && intent.hasExtra("id")) {
             movieId = intent.getIntExtra("id", -1);
         } else {
             finish();
         }
+
         movie = viewModel.getMovieById(movieId);
         if (movie == null) {
             movie = viewModel.getFavouriteMovieById(movieId);
@@ -89,7 +92,7 @@ public class DetailedActivity extends AppCompatActivity {
         recyclerViewTrailers = findViewById(R.id.recyclerViewTrailers);
         recyclerViewReviews = findViewById(R.id.recyclerViewReviews);
 
-        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+
 
         trailerAdapter = new TrailerAdapter();
         reviewAdapter = new ReviewAdapter();
